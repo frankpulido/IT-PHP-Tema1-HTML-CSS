@@ -35,7 +35,7 @@ nav{
     /*justify-content: space-between;*/
     color: white;
     text-align:center;
-    background-color: gold;
+    background-color: rgb(30, 13, 65);
     /*margin-left: 40px;*/
     margin: 15px 15px;
     padding: 10px 30px;
@@ -43,7 +43,7 @@ nav{
 }
 
 .nav-link:hover{
-    background-color: coral;
+    background-color: rgb(74, 91, 144);
 }
 
 .logo{
@@ -95,18 +95,18 @@ nav{
     /*display:block;*/
     background-color:aqua;
     width:85%;
-    padding: 0px 30px 0px 0px;
+    padding: 15px;
     /* padding: 30px; /* QUITARÉ EL PADDING PARA PONER MÁRGENES A "ARTICLE" Y "NAVEGACIÓN"*/
 }
 
 .columnas{
-    display:inline-block;
+    /*display:inline-block;*/
     /*justify-content:space-between;*/
     justify-content:space-between;
     display:flex;
     flex-wrap :wrap;
     justify-content: center;
-    width: 100%;
+    /*width: 100%;*/
     /*padding:30px;*/
 }
 
@@ -115,14 +115,17 @@ nav{
     color: white;
     /*background-color: rgb(52, 19, 220); /* COMENTAR BACKGROUND Y PADDING PARA CAMBIO CON SECCIÓN COLUMNAS DEL DOCUMENTO HTML */
     /*padding: 50px 50px; /* COMENTAR BACKGROUND Y PADDING PARA CAMBIO CON SECCIÓN COLUMNAS DEL DOCUMENTO HTML */
-    width: 50%;
+    width: 46.25%;
+    margin: 15px;
+    padding: 30px 30px;
+    background-color: rgb(52, 19, 220);
     box-sizing: border-box;
 }
 
 
 article {
     /*margin: 30px;*/
-    margin: 30px 0px 30px 30px;
+    margin: 15px;
     padding: 30px 30px;
     background-color: rgb(52, 19, 220);
 }
@@ -133,7 +136,7 @@ article {
     flex-direction: column;
     justify-content: end;*/
     background-color: rgb(140, 179, 128);
-    margin:  0px 0px 30px 30px;
+    margin:  15px;
     padding: 20px 20px;
 }
 
@@ -187,7 +190,7 @@ footer{
     }
     .leftsection{
         /*display:block;*/
-        padding: 30px 30px 30px 30px;
+        /*padding: 30px 30px 30px 30px;*/
         width:auto;
     }
     aside{
@@ -200,14 +203,15 @@ footer{
     .elemento{
         justify-content:space-between;
     }
-    */
+    
     article{
         margin: 0px 0px 30px 0px;
     }
+    
     .navegacion{
         margin: 0px;
     }
-    
+    */
 }
 
 @media (max-width: 750px) {
@@ -231,10 +235,13 @@ footer{
 
 @media (max-width: 645px) {
     nav{
-        /*display:inline-flex;*/
+        display:inline-flex;
         flex-direction:column;
         justify-content: center;
         padding: 10px;
+    }
+    .nav-link{
+        flex-direction:column;
     }
 }
 
