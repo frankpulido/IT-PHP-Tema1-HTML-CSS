@@ -1,16 +1,14 @@
+/*
+https://www.w3schools.com/cssref/css3_pr_flex.php
+*/
+
 body{
     max-width: 1200px;
     margin:auto;
-    /*margin-top: 10px;
-    margin-bottom: 10px;*/
-    /* USANDO MARGIN TOP Y BOTTOM LA PÁGINA APARECÍA JUSTIFICADA DEL LADO IZQUIERDO */
 }
 
 header{
     background-color: black;
-    /*height:fit-content;
-    margin-top: 10px;
-    margin-bottom: 10px;*/
     padding: 40px;
 }
 
@@ -21,49 +19,44 @@ header{
     padding: 30px;
 }
 
-nav{
-    /*display:inline-block;
-    justify-content:center;*/
+.logo{
+    padding: 25px 20px;
     background-color: salmon;
-    padding: 0px 30px;
-    /*margin: 20px 0px;*/
+    color: white;
     text-align: center;
+    flex: 1 1 auto;
+}
+
+nav{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    background-color: salmon;
+    padding: 0px 10px;
+    margin: 0px 30px;
+    flex: 3 1 auto; /* esta instrucción la uso en los 3 elementos del contenedor "top-bar" (logo-nav-social). NAV ocupará el triple del espacio horizontal y separo con márgenes laterales que debo suprimir con media query al pasar sus elementos a disponerse en una columna. Los 3 componentes : grow - shrink - %... Debo verlo en más detalle */
 }
 
 .nav-link{
-    display:inline-block;
-    /*justify-content: space-between;*/
     color: white;
     text-align:center;
     background-color: rgb(30, 13, 65);
-    /*margin-left: 40px;*/
-    margin: 15px 15px;
-    padding: 10px 30px;
+    margin: 15px 10px;
+    padding: 10px 20px;
     text-decoration: none;
 }
 
 .nav-link:hover{
-    background-color: rgb(74, 91, 144);
-}
-
-.logo{
-    /*display:inline-block;
-    justify-content: flex-start;*/
-    padding: 25px 40px;
-    /*margin: 5px 10px;*/
-    background-color: salmon;
-    color: white;
-    text-align: center;
+    color:salmon;
+    background-color:blue;
 }
 
 .social{
-    /*display: inline-block;
-    justify-content:flex-end;*/
-    padding: 25px 40px;
-    /*margin: 5px 10px;*/
+    padding: 25px 20px;
     background-color: salmon;
     color: white;
     text-align: center;
+    flex: 1 1 auto;
 }
 
 .banner-box{
@@ -85,36 +78,27 @@ nav{
 .midsection{
     display: flex;
     background-color: black;
-    /*height:fit-content;*/
     margin: 40px 0px;
     padding: 40px;
 }
 
 .leftsection{
-    /*display: flex; /* ****** OJO ANTES TENÍA COMENTADO *****
-    /*display:block;*/
+
     background-color:aqua;
-    width:85%;
+    width:85%; /* En lugar de definir 85% (aside 15%) pude haber utilizado la instrucción flex(grow-shrink-xx) como con el menú, estableciendo proporcionalidad */
     padding: 15px;
-    /* padding: 30px; /* QUITARÉ EL PADDING PARA PONER MÁRGENES A "ARTICLE" Y "NAVEGACIÓN"*/
 }
 
 .columnas{
-    /*display:inline-block;*/
-    /*justify-content:space-between;*/
-    justify-content:space-between;
     display:flex;
+    justify-content:space-between;
     flex-wrap :wrap;
-    justify-content: center;
-    /*width: 100%;*/
-    /*padding:30px;*/
+    width: 100%;
 }
 
 .elemento{
-    /*margin:  10px;*/
+    flex: 1 1 auto; /* Los distintos "article" crecen y encogen manteniendo el espaciado siempre igual. Funciona porque la class "columnas" es flex... */
     color: white;
-    /*background-color: rgb(52, 19, 220); /* COMENTAR BACKGROUND Y PADDING PARA CAMBIO CON SECCIÓN COLUMNAS DEL DOCUMENTO HTML */
-    /*padding: 50px 50px; /* COMENTAR BACKGROUND Y PADDING PARA CAMBIO CON SECCIÓN COLUMNAS DEL DOCUMENTO HTML */
     width: 46.25%;
     margin: 15px;
     padding: 30px 30px;
@@ -124,17 +108,12 @@ nav{
 
 
 article {
-    /*margin: 30px;*/
     margin: 15px;
     padding: 30px 30px;
     background-color: rgb(52, 19, 220);
 }
 
-
 .navegacion{
-    /*display:flex;
-    flex-direction: column;
-    justify-content: end;*/
     background-color: rgb(140, 179, 128);
     margin:  15px;
     padding: 20px 20px;
@@ -143,16 +122,14 @@ article {
 aside {
     display:flex;
     flex-wrap: wrap;
-    width: 15%;
+    width: 15%; /* En lugar de definir 15% (left-section 85%) pude haber utilizado la instrucción flex(grow-shrink-xx) como con el menú, estableciendo proporcionalidad */
     padding: 30px;
     margin-left: 30px;
-    /*float: right;*/
     background-color: lightgray;
 }
 
 .publicidad {
     display:inline-block;
-    /*object-fit: contain;*/
     padding: 10px;
     background-color:gold;
     width: 100%;
@@ -162,20 +139,40 @@ footer{
     display: flex;
     background-color: black;
     height:fit-content;
-    /*margin: 40px 0px;*/
     padding: 40px;
 }
 
 .footerbox{
-    /*display:inline-block;
-    object-fit: contain;*/
     padding: 30px;
     background-color:gold;
     width: 100%;
-    /*max-height: auto;*/
 }
 
-@media (max-width: 1105px) {
+@media(1025px <= width <= 1141px){
+    .elemento{
+        width: 45.7%;
+    }
+}
+
+@media (max-width: 1024px) {
+    .midsection{
+        display:block;
+    }
+    .leftsection{
+        width:auto;
+    }
+    aside{
+        margin-top: 40px;
+        margin-left: 0px;
+        width: auto;
+    }
+}
+
+@media (max-width: 910px) {
+    
+    nav{
+        margin: 30px 0px;
+    }
     .top-bar{
         flex-direction: column;
     }
@@ -185,66 +182,27 @@ footer{
     .social{
         flex-direction: column;
     }
-    .midsection{
-        display:block;
-    }
-    .leftsection{
-        /*display:block;*/
-        /*padding: 30px 30px 30px 30px;*/
-        width:auto;
-    }
-    aside{
-        /*display:block;*/
-        margin-top: 40px;
-        margin-left: 0px;
-        width: auto;
-    }
-    /*
     .elemento{
-        justify-content:space-between;
+        width: 45.4%;
     }
-    
-    article{
-        margin: 0px 0px 30px 0px;
-    }
-    
-    .navegacion{
-        margin: 0px;
-    }
-    */
 }
 
-@media (max-width: 750px) {
-    /*
-    nav{
-        flex-direction:column;
-        justify-content: center;
-    }
-    .nav-link{
-        display:block;
-        flex-direction: column;
-        justify-content: center;
-        margin: 5px 20px;
-        margin-bottom: 5px;
-    }
-    */
+@media (max-width: 767px) {
     .elemento{
         width: 100%;
     }
 }
 
-@media (max-width: 645px) {
+@media (max-width: 550px) {
     nav{
         display:inline-flex;
         flex-direction:column;
         justify-content: center;
-        padding: 10px;
+        padding: 20px;
     }
     .nav-link{
         flex-direction:column;
     }
 }
 
-@media (max-width: 310px) {
-    /* colapsar el menu y poner un pictograma*/
-}
+/* colapsar el menu y poner un pictograma : VER CLASES CIBERNARIUM */
