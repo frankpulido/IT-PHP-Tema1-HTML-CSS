@@ -1,0 +1,56 @@
+/*
+https://www.w3schools.com/CSS/css_grid.asp
+*/
+
+body{
+    max-width: 1200px;
+    margin: auto;
+}
+.grid-container{ /* Este sistema me permitirá controlar mejor el espaciado haciendo un resizing perfecto */
+    background-color: black;
+    display: grid;
+    grid-template-columns: 4.1fr 4.1fr 1.8fr; /* fr = fraction. Puedo establecer cualquier proporcionalidad, no tienen necesariamente que sumar 10, ni 1, ni 100 */
+    grid-template-areas:
+    'elementos elementos aside'
+    'navegacion navegacion aside'
+    'footer footer footer';
+    gap: 10px;
+    padding: 10px;
+    background-color: cornflowerblue;
+    margin: 20px 0px;
+}
+.navegacion{
+    grid-area: navegacion;
+    background-color: brown;
+    padding: 10px;
+}
+.aside{
+    grid-area: aside;
+    background-color: aqua;
+    padding: 10px;
+}
+footer{
+    grid-area: footer;
+    background-color: aqua;
+    padding: 10px;
+}
+.articles-nested-grid{
+    grid-area: elementos;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;  /* El PADDING no es necesario porque tenemos el GAP del GRID superior (grid-container) */
+    /*grid-auto-rows: auto; (auto es el default, puede colocarse una medida que aplicará a TODAS por igual)
+    SU USO : Definir cual es la altura que tendrán las columnas, dado que si no se definen crecerán conforme al contenido.
+    IMPORTANTE : LO USARÉ para acortar y usar el enlace "LEER MÁS" al final de los artículos del blog */
+    /*grid-template-rows : XXpx YYpx ZZpx
+    SU USO : indicamos explícitamente la altura de la columna 1 (XX), la columna 2 (YY) y la columna 3 (ZZ). Si existiesen más sus alturas se adaptarán al contenido.
+    */
+}
+.grid-item{
+    width: 100%; /* VENTAJA : Usando GRID me llenará el 100% de la columna SIEMPRE dejando sólo el GAP y sin deajustes como me ocurre al trabajar con % al usar flex */
+    text-align: center;
+    background-color: aquamarine;
+    justify-content: space-around;
+    padding: 5px;
+    box-sizing: border-box;
+}
