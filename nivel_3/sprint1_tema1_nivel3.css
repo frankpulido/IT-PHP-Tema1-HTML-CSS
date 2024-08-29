@@ -2,55 +2,332 @@
 https://www.w3schools.com/CSS/css_grid.asp
 */
 
-body{
+body {
     max-width: 1200px;
     margin: auto;
+
+    .poppins-thin-small {
+        font-family: "Poppins", sans-serif;
+        font-size: small;
+        font-weight: 100;
+        font-style: normal;
+    }
+  
+    .poppins-thin {
+        font-family: "Poppins", sans-serif;
+        font-weight: 100;
+        font-style: normal;
+    }
+        
+    .poppins-extralight {
+        font-family: "Poppins", sans-serif;
+        font-weight: 200;
+        font-style: normal;
+    }
+        
+    .poppins-regular {
+        font-family: "Poppins", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+    }
+        
+    .poppins-semibold {
+        font-family: "Poppins", sans-serif;
+        font-weight: 600;
+        font-style: normal;
+    }  
 }
-.grid-container{ /* Este sistema me permitirá controlar mejor el espaciado haciendo un resizing perfecto */
-    background-color: black;
+
+header {
+    background-color: rgb(240, 248, 255, 0.7);
+    height: 8vh;
+    position: sticky;
+    padding: 20px;
+    margin-bottom: -20vh;
+    top: 0;
+    z-index: 1000;
+
+    /* ESTA ES LA OPCIÓN FLEX*/
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    
+    /* ESTA ES LA OPCIÓN GRID - ES PREFERIBLE FLEX EN ESTOS CASOS Y USAR GRID SÓLO PARA LA MAQUETA DE CONTENEDORES */
+    /*
     display: grid;
-    grid-template-columns: 4.1fr 4.1fr 1.8fr; /* fr = fraction. Puedo establecer cualquier proporcionalidad, no tienen necesariamente que sumar 10, ni 1, ni 100 */
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 50px;
+    */
+}
+
+.logo {
+    width: 4vw;
+    min-width: 40px;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.nav-link {
+    /*color:darkgrey;*/
+    color: black;
+    /*font-family: "Poppins", sans-serif;*/
+    font-size: small;
+    font-style:normal;
+    margin: 0px 10px;
+    padding: 0px 5px; 
+    text-decoration: none;
+}
+
+.nav-link:hover {
+    color:black;
+    background-color: lightblue;
+}
+
+.material-symbols-outlined {
+    font-size: 20px;
+    margin-right: 5px;
+    vertical-align:middle;
+}
+
+.text-link {
+    font-size: 15px;
+}
+
+.social img {
+    margin: 0px 5px;
+    width: 20px;
+    height:auto;
+}
+  
+.social a:hover {
+    opacity: 0.5;
+}
+
+.background-img {
+    display:flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+
+    height: 80vh;
+    background-image:url(../nivel_2/img/headerCrop2.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.banner-box {
+    width: 80%;
+    height: 30vh;
+    background-color: rgba(84, 63, 129, 0.3);
+    animation: WOWbannerbox 3s ease-in;
+}
+  
+.slogan {
+    text-align: center;
+    margin-top: 15vh;
+    padding: 0px 25px;
+    font-weight: 400;
+    font-size: 20px;
+    font-style: normal;
+    color:rgb(68, 46, 120);
+    opacity: 0.6;
+    animation: WOWslogan 3s ease-in;
+}
+  
+
+.grid-container { /* Este sistema me permitirá controlar mejor el espaciado haciendo un resizing perfecto */
+    background-color: lightgray;
+    display: grid;
+    /*
+    FINALMENTE NO UTILICÉ ESTE SISTEMA PORQUE ME COMPLICABA EL REPOSICIONAMIENTO DEL ASIDE PARA FORMATO TABLET/MÓVIL : USÉ "SPAN ROW" Y "ORDER"
+    grid-template-columns: 4.1fr 4.1fr 1.8fr; /*fr = fraction. Puedo establecer cualquier proporcionalidad, no tienen necesariamente que sumar 10, ni 1, ni 100
     grid-template-areas:
     'elementos elementos aside'
-    'navegacion navegacion aside'
-    'footer footer footer';
-    gap: 10px;
+    'navegacion navegacion aside';
+    */
+    grid-template-columns: 4fr 1fr;
+    gap: 10px; /* DEBO ELIMINAR GAP PARA HACER EL MARGEN DE SEPARACIÓN DE ASIDE ??? */
     padding: 10px;
-    background-color: cornflowerblue;
-    margin: 20px 0px;
+    margin: 10px 0px;
 }
-.navegacion{
-    grid-area: navegacion;
-    background-color: brown;
-    padding: 10px;
-}
-.aside{
-    grid-area: aside;
-    background-color: aqua;
+
+.navegacion {
+    /*grid-area: navegacion;*/
     padding: 10px;
 }
-footer{
-    grid-area: footer;
-    background-color: aqua;
+
+aside {
+    /*grid-area: aside;*/
+    background-color: aliceblue;
+    grid-row: span 2; /* Esto lo agregué al eliminar el uso del "grid-template-areas" */
     padding: 10px;
 }
-.articles-nested-grid{
-    grid-area: elementos;
+
+footer {
+    text-align: center;
+    margin-top: 8px;
+    padding: 5px;
+    background-color: aliceblue;
+}
+
+.articles-nested-grid {
+    /*grid-area: elementos;*/
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;  /* El PADDING no es necesario porque tenemos el GAP del GRID superior (grid-container) */
     /*grid-auto-rows: auto; (auto es el default, puede colocarse una medida que aplicará a TODAS por igual)
     SU USO : Definir cual es la altura que tendrán las columnas, dado que si no se definen crecerán conforme al contenido.
-    IMPORTANTE : LO USARÉ para acortar y usar el enlace "LEER MÁS" al final de los artículos del blog */
+    IMPORTANTE : LO USARÉ para acortar y usar el enlace "LEER MÁS" al final de los artículos del blog.
+    OJO :
+    - overflow: hidden;
+    - cómo se pone el enlace "leer más"?
+    - también existe : overflow-y: scroll;
+    grid-auto-flow : row dense; (los espacios se ocupan por filas... con "column dense" se van ocupando por columnas)
+    */
     /*grid-template-rows : XXpx YYpx ZZpx
     SU USO : indicamos explícitamente la altura de la columna 1 (XX), la columna 2 (YY) y la columna 3 (ZZ). Si existiesen más sus alturas se adaptarán al contenido.
     */
 }
-.grid-item{
+
+.grid-item {
     width: 100%; /* VENTAJA : Usando GRID me llenará el 100% de la columna SIEMPRE dejando sólo el GAP y sin deajustes como me ocurre al trabajar con % al usar flex */
-    text-align: center;
-    background-color: aquamarine;
+    background-color: aliceblue;
     justify-content: space-around;
-    padding: 5px;
+    padding: 10px;
     box-sizing: border-box;
+}
+
+.grid-item img {
+    width:100%;
+    height:auto;
+}
+  
+.published {
+    color: rgb(234, 235, 223);
+    font-size: larger;
+    margin-top: -30px;
+    margin-left: 5px;
+}
+  
+.titulo {
+    background-color: coral;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    font-size: larger;
+    font-weight: 600;
+    font-style: normal;
+    padding: 10px 10px 1px 10px;
+    margin: 0px;
+}
+  
+.elemento-texto {
+    column-count: 2;
+    column-gap: 15px;
+    margin: 10px;
+}
+  
+.full-article {
+    margin: 10px;
+    color: gray;
+    text-decoration: none;
+}
+  
+.full-article:hover {
+    color: black;
+    font-weight: bold;
+}
+  
+
+@media (max-width: 1024px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+    aside {
+        grid-row: 4/5; /* Me está causando que se duplique el gap, suma el gap del contenedor mayor al del anidado */
+        /* La instrucción anterior (grid-row) condensa las 2 instrucciones a continuación :
+        grid-row-start: 4;
+        grid-row-end: 5;
+        */
+    }
+}
+
+@media (max-width: 750px) {
+    .nav-link {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0px 12px;
+        padding: 5px;
+    }
+    .text-link {
+        display: none;
+    }
+    .nav-link:hover {
+        .text-link {
+          display: contents;
+        }
+    }
+    .material-symbols-outlined {
+        margin-right: 5px;
+        vertical-align:middle;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+    .articles-nested-grid {
+        grid-template-columns: 1fr;
+    }
+
+    h2 {
+        font-weight: 200;
+    }
+      /* La siguiente instrucción es para posicionar el menú de navegación vertical y alinear con los pictogramas, en lugar de centrando el texto
+      Debería crear un pictograma que sustituyese la columna y la mostrase/ocultase al hacer click sobre él*/
+    nav { 
+        flex-direction: column;
+        align-items:flex-start;
+    }
+    .nav-link {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin: 3px 0px;;
+    }
+    .material-symbols-outlined {
+        margin-right: 10px;
+        vertical-align:middle;
+    }
+    .text-link {
+        display: contents;
+    }    
+}
+
+@keyframes WOWslogan{
+    0%{transform: translateY(+500px);}
+    100%{transform: translateY(0);}
+}
+
+@keyframes WOWbannerbox{
+    0%{
+        transform: translateY(-30vh);
+        opacity: 0;
+    }
+    100%{
+        transform: translateY(0);
+        opacity: 1;
+    }
 }

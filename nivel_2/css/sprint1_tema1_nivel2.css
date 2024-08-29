@@ -306,6 +306,9 @@ aside {
     flex-direction: row;
     align-items: center;
   }
+  .text-link{
+    display: none;
+  }
   .nav-link:hover{
     .text-link{
       display: contents;
@@ -315,9 +318,6 @@ aside {
     font-size: 25px;
     margin-right: 0px;
     vertical-align:middle;
-  }
-  .text-link{
-    display: none;
   }
   .background-img {
     background-image: url("../img/header.jpg");
